@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest with node20
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
@@ -18,10 +18,11 @@ jobs:
 
       - id: get-project
         name: Get project name
-        run: echo "::set-output name=PROJECT::$(cat project-to-build)"
+        run: |
+          echo "::set-output name=PROJECT::$(cat project-to-build)"
 
       - name: Clone project
-        run: git clone --depth=1 ${{ steps.get-project.outputs.PROJECT }} project
+        run: git clone --depth=1 ${{ env.PROJECT }} project
 
       - name: Build the app
         working-directory: ./project
