@@ -27,7 +27,7 @@ jobs:
         working-directory: ./project
         run: |
           if [ ! -f "gradlew" ]; then
-            gradle wrapper --gradle-version 7.3.3
+            ./gradle wrapper --gradle-version 7.3.3
           fi
           chmod +x gradlew
           ./gradlew assembleDebug --warning-mode all --stacktrace
