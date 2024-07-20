@@ -1,4 +1,4 @@
-name: android_build
+name: android_build_template
 
 on:
   workflow_dispatch:
