@@ -16,14 +16,15 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
+      - name: Make Gradlew executable
+        run: chmod +x ./project/gradlew
+
       - name: Build the app
         working-directory: ./project
-        run: |
-          chmod +x gradlew
-          ./gradlew assembleDebug --warning-mode all --stacktrace
+        run: ./gradlew assembleDebug --warning-mode all --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
           name: my-build-apk
-          path: ./**/*.apk
+          path: ./project/app/build/outputs/**/*.apk
