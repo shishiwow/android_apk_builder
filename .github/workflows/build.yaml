@@ -16,6 +16,12 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
 
+      - name: Ensure Gradle wrapper exists
+        run: |
+          cd ./project
+          ./gradlew wrapper
+        working-directory: ./project
+
       - name: Make Gradlew executable
         run: chmod +x ./project/gradlew
 
